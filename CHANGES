@@ -1,0 +1,19 @@
+Changes in 1.2.0
+---------------------
+17/02/2007
+- Fixed submit problems with IE7
+- New fields added: brand/model/sn, purchase info, warranty info etc...
+- Now is possible to insert more images foreach item
+- New item view with image gallery and print button
+- New advanced search
+
+
+Changes in 1.0.0
+---------------------
+25/12/2006
+- Fixed problem when searching into a locations with less than 10 items with previous pageID set to a value > 1
+- Fixed problem uploading an image
+- Saving an item coming from peoples list must return into peoples. Fixed
+- Now a deletion of a person reset loan on item also
+~
+

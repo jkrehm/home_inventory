@@ -1,0 +1,225 @@
+body
+{
+	font-size: 16px;
+	color: #222222;
+	font-family: Arial;
+}
+
+.contenthandler
+{
+	padding-left: 20px;
+	padding-top: 8px;
+}
+
+.content
+{
+	font-size: 16px;
+	color: #444455;
+	font-family: Arial;
+}
+
+H1
+{
+	font-weight: bold;
+	font-size: xx-large;
+	margin-bottom: 2px;
+	color: #000066;
+}
+
+H2
+{
+	font-weight: bold;
+	font-size: large;
+	margin-bottom: 2px;
+	color: #FFFFFF;
+}
+
+H3
+{
+	font-weight: bold;
+	font-size: medium;
+	margin-bottom: 2px;
+	color: #000000;
+}
+
+A:link  {
+	COLOR : #2222AA;
+}
+
+A:visited  {
+	COLOR : #444455;
+}
+
+A:hover  {
+	COLOR : #2451A6;
+}
+
+A:active  {
+	COLOR : #006699;
+}
+
+.smaller
+{
+	font-size:12pt;
+	font-family:Arial;
+}
+
+.smallFont
+{
+	font-size:10pt;
+	font-family:Arial;
+}
+
+.tableTitle
+{
+	font-size:15px;
+	font-family:Verdana;
+}
+
+A.whiteLink {
+	color: white;
+	font-weight: bold;
+	font-size: 9pt;
+}
+
+A.whiteLink:hover  {
+	background-color: #ff601b;
+	
+}
+
+@media screen {
+	.hideprint
+	{			
+	}
+}
+
+@media print {
+	.hideprint
+	{	
+		position:absolute;
+		left:-1000;
+		top:-1000;
+		visibility:hidden;
+	}
+}
+
+.lefted{
+	position:relative;
+}
+
+
+
+
+TD.normal  {
+	FONT-SIZE : 14px;
+	COLOR : #140812;
+	FONT-FAMILY : Arial;
+}
+
+TD.tablemainheader
+{
+    BORDER-RIGHT: #6782a6 thin ridge;
+    BORDER-TOP: #6782a6 thin ridge;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #6782a6 thin ridge;
+    COLOR: black;
+    BORDER-BOTTOM: #6782a6 thin ridge;
+	FONT-FAMILY : Tahoma;
+    BACKGROUND-COLOR: transparent
+}
+TD.tableheader  {
+	FONT-SIZE : 11px;
+	COLOR : white;
+	FONT-FAMILY : Tahoma;
+	BACKGROUND-COLOR : #6699cc;
+}
+TD.partialBorder  {
+	FONT-SIZE: 11px;
+	BORDER-LEFT: 1px #555599 solid;
+    BORDER-RIGHT: 1px #555599 solid;
+    BORDER-BOTTOM: 1px #555599 solid;
+    BACKGROUND-COLOR: #6699cc
+}
+.tabledata  {
+	FONT-SIZE : 12px;
+	COLOR : black;
+	BACKGROUND-COLOR : #e9f0ff;
+	
+}
+.tabledata2  {
+	FONT-SIZE : 11px;
+	COLOR : black;
+	FONT-FAMILY : Tahoma;
+	BACKGROUND-COLOR : #e9ecf9;
+}
+.tabledata3  {
+	FONT-SIZE : 11px;
+	COLOR : black;
+	FONT-FAMILY : Verdana;
+	BACKGROUND-COLOR : #eeeeee;
+}
+.tabledata4  {
+	FONT-SIZE : 11px;
+	COLOR : black;
+	FONT-FAMILY : Verdana;
+	BACKGROUND-COLOR : #ffffff;
+}
+.tabledata5  {
+	FONT-SIZE : 11px;
+	COLOR : black;
+	FONT-FAMILY : Verdana;
+	BACKGROUND-COLOR : #ffeeee;
+}
+.tabledata6  {
+	FONT-SIZE : 12px;
+	COLOR : black;
+	FONT-FAMILY : Tahoma;
+	BACKGROUND-COLOR : #D9DBE7;
+	BORDER-WIDTH: 1px;
+	BORDER-STYLE: solid;
+	BORDER-COLOR: #BBBBBB;
+}
+.tabledata7  {
+	FONT-SIZE : 11pt;
+	COLOR : black;
+	FONT-FAMILY : Verdana;
+	BACKGROUND-COLOR : #eeeeee;
+}
+
+INPUT.smallbutton
+{
+	FONT-FAMILY : Verdana;
+	font-size: 11px;
+}
+
+SELECT, TEXTAREA, INPUT.text
+{
+	FONT-SIZE : 12px;
+	COLOR : black;
+	FONT-FAMILY : Verdana;
+	BACKGROUND-COLOR : #ffffff;
+}
+
+
+
+TEXTAREA.editable 
+{
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	background-color: transparent;
+	border-bottom-style: none;
+}
+
+Table.main  {
+	MARGIN : 1em auto;
+}
+
+.footer  {
+	FONT-SIZE : 11px;
+	COLOR : #cccccc;
+	FONT-FAMILY : Tahoma;
+	TEXT-DECORATION : none;
+	font-weight: bold;
+}
+

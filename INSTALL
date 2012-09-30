@@ -1,0 +1,112 @@
+Here short installation instructions.
+Feel free to write me if you have installation problems, suggestions
+or features request!
+
+Marco Mussini <marcomus@users.sourceforge.net>
+
+
+REQUIREMENTS:
+--------------------------------------------------------------------
+- A web server with PHP >= 4.3 installed and properly configured
+  I suggest Apache (http://www.apache.org).
+  
+- MySQL (http://www.mysql.com) with a user account with select, insert,
+  update, delete and create privileges
+
+- Smarty template engine (http://smarty.php.net)
+
+
+
+INSTALLATION STEPS:
+--------------------------------------------------------------------
+NOTE: if you are upgrading from a previous installation of home inventory follow the
+      appropriate section below.
+
+If you have problem installing or configuring home inventory please submit a
+request on sourceforge at https://sourceforge.net/projects/homeinv/, I will reply
+as soon as possibile.
+
+
+FIRST INSTALLATION:
+-------------------
+1) Untar package in a directory somewhere in your web server hierarchy:
+   
+   tar jxvf package_name.tar.bz2
+   
+   I assume this final directory structure:
+   /var/www/localhost/home_inventory/
+   /var/www/localhost/home_inventory/htdocs		<---- web server shoult point here
+   /var/www/localhost/home_inventory/smarty		<---- smarty base directory
+   /var/www/localhost/home_inventory/smarty/templates	<---- .tpl repository
+   /var/www/localhost/home_inventory/smarty/templates_c	<---- compiled .tpl
+   /var/www/localhost/home_inventory/smarty/configs		<---- empty but needed!
+   /var/www/localhost/home_inventory/smarty/cache		<---- empty but needed!
+   
+   so that you can access by typing http://your_server/home_inventory, where you_server
+   is your server's host name.
+	
+2) Run mysql logging in with your administrator account and create 
+   the Home inventory's user with the command:
+
+   > GRANT SELECT, INSERT, UPDATE, DELETE, CREATE on home_inventory.* TO 
+	'homeinv'@'localhost' identified by 'your_password';
+
+   Please refer to mysql user manual for further instruction:
+   (http://dev.mysql.com/doc/#manual)
+
+3) Copy and paste the contents of install.sql into MySQL session to create
+   needed tables or enter the following command into the bash shell:
+   $ mysql -u homeinv -p < install.sql
+
+4) Open /environment.php and edit the following constants with your
+   installation path, server hostname, MySQL choosed password, and username/password to
+   login into home inventory:
+
+	define('SITE_PATH', '/var/www/localhost/home_inventory/');
+	define('SMARTY_DIR', '/usr/share/php/smarty/');		<---- smarty package installation path: depends on your linux distribution or windows
+	define('MYSQL_DATABASE_NAME', 'home_inventory');
+	define('MYSQL_USER', 'homeinv');
+	define('MYSQL_PASSWD', 'your_password');
+	define('MYSQL_SERVER_HOSTNAME', 'your_hostname');
+	define('HOMEINV_USERNAME', 'username');				<---- user/passwd for home inventory's login
+	define('HOMEINV_PASSWD', 'passwd');
+	
+	Note1: home inventory provide initial login as simple security protection, but for now
+	       it's not possible define several user. Perhaps in future release...
+	Note2: image attachment is limited to 120 KB (JPG or GIF), if you want to change this size 
+		   please edit PICTURE_MAXSIZE costant in htdocs/environment.php
+
+5) Make sure file permissions are correctly set in the directory (directory is
+   world readable and executable and files are all world readable, e.g.)
+
+6) Go to http://your_server/home_inventory and enjoy!!
+
+
+
+UPGRADING FROM PREVIOUS VERSION  ( < 1.2.0)
+-------------------------------------------
+
+I assume that home inventory was installed in /var/www/localhost/home_inventory
+and that the database name was 'home_inventory'.
+
+1) First backup your previous installation for safety:
+	cp -R /var/www/localhost/home_inventory/ /var/www/localhost/home_inventory_OLD/
+	
+2) Untar package in the same directory of your previous installation:  
+   tar jxvf package_name.tar.bz2
+   this command updates all files preserving uploaded images.
+
+3) Open /var/www/localhost/home_inventory_OLD/htdocs/environment.php with a text
+   editor, then copy and paste all the define() line at the start of the file 
+   into the new copy of environment.php (DO NOT copy the whole file!)
+
+4) Upgrade the database structure with the following command into a shell.
+   NOTE: An administrator account with ALTER privileges is needed (for example root)
+   $ mysql -u root -p < upgrade.sql
+   
+5) Delete smarty cache:
+	rm -f /var/www/localhost/home_inventory/smarty/templates_c/*
+
+6) Go to http://your_server/home_inventory and test the new installation.
+   If all is fine delete old directory  /var/www/localhost/home_inventory_OLD/
+
