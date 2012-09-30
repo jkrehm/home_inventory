@@ -43,10 +43,10 @@
                                                 <td class=tableheader align="left" colspan="3">
                                                         <table cellpadding="0" cellspacing="0" width="100%">
                                                         <TR>
-                                                                <TD width="55%" style="font-family:Arial; font-size: 11px; color: #FFFFFF;"><b>Insert new location</b><br/>
+                                                                <td style="font-family:Arial; font-size: 11px; color: #FFFFFF;"><b>Insert new location</b><br/>
                                                                         Fields marked with a * are required.
-                                                                </TD>
-                                                                <td align="right">
+                                                                </td>
+                                                                <td style="text-align:right">
                                                                         <input type="button" class="smallbutton" onclick="save('frmLocation', 'save', 1);" value="Save">&nbsp;&nbsp;
                                                                 </td>
                                                         </TR>

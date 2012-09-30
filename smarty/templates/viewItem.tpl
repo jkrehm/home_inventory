@@ -16,10 +16,11 @@
 					<td class=tableheader align="left" colspan="3">
 						<table cellpadding="0" cellspacing="0" width="100%">
 						<TR>
-							<TD width="55%"><b>View item</b></TD>
-							<td align="right">
+							<td><b>View item</b></td>
+							<td style="text-align:right">
 								<input type="button" class="smallbutton" onclick="document.location.href='{if !empty($smarty.request.returnTo)}{$smarty.request.returnTo}{else}list.php{/if}{if !empty($smarty.session.pageID)}?pageID={$smarty.session.pageID}{/if}';" value="&lt; Back">&nbsp;&nbsp;&nbsp;
 								<input type="button" class="smallbutton" onclick="self.print();" value="Print">&nbsp;&nbsp;&nbsp;
+								<input type="button" class="smallbutton" onclick="document.location.href='editItem.php?id={$ITEM.ITM_ID}&returnToView=list.php'" value="Edit Item">
 							</td>
 						</TR>
 						</table>
@@ -52,7 +53,7 @@
 					<td class="tabledata3" align="left" valign="top" colspan="2">
 						<b style="font-size: 12pt;">{$ITEM.ITM_ShortName}</b>
 						<br/>
-						<span style="font-size: 11pt;">{$ITEM.ITM_Description}
+						<span style="font-size: 11pt;">{$ITEM.ITM_Description|nl2br}
 						<br/><br/>
 						<b style="font-size: 10pt;">Location:</b> &nbsp;{$ITEM.LOC_Description1} {if !empty($ITEM.LOC_Description2)}- {$ITEM.LOC_Description2}{/if}
 						<br/>
@@ -76,8 +77,8 @@
 				<tr>
 					<td class="tabledata3" align="right"><b>Condition</b></td>
 					<td valign="top" colspan="2" class="tabledata7" nowrap>
-						{if $ITEM.ITM_State == 0}USED{elseif $ITEM.ITM_State == 1}NEW{/if}
-						{if $ITEM.ITM_Condition == 1}- Poor{elseif $ITEM.ITM_Condition == 2}- Good{elseif $ITEM.ITM_Condition == 3}- Fair{elseif $ITEM.ITM_Condition == 4}- Excellent{/if}
+						{if $ITEM.ITM_State == 1}New{elseif $ITEM.ITM_State == 2}Used{/if}
+						{if $ITEM.ITM_Condition == 1}- Poor{elseif $ITEM.ITM_Condition == 2}- Fair{elseif $ITEM.ITM_Condition == 3}- Good{elseif $ITEM.ITM_Condition == 4}- Excellent{/if}
 						{if !empty($ITEM.ITM_ConditionDescr)}<br/>{$ITEM.ITM_ConditionDescr}{/if}
 					</td>	
 				</tr>
@@ -104,9 +105,9 @@
 				<tr>
 					<td class="tabledata3" align="right"><b>Purchase info</b></td>
 					<td valign="top" colspan="2" class="tabledata7" nowrap>
-						{if !empty($ITEM.ITM_PurchaseDate)}{$ITEM.ITM_PurchaseDate|date_format:"%d/%m/%Y"} &nbsp;{/if}
+						{if !empty($ITEM.ITM_PurchaseDate)}{$ITEM.ITM_PurchaseDate|date_format:"%m/%d/%Y"} &nbsp;{/if}
 						{if !empty($ITEM.ITM_PurchaseLocation)}{$ITEM.ITM_PurchaseLocation} &nbsp;{/if}
-						{if !empty($ITEM.ITM_PurchasePrice)}{$ITEM.ITM_PurchasePrice} &nbsp;{/if}
+						{if !empty($ITEM.ITM_PurchasePrice)}${$ITEM.ITM_PurchasePrice} &nbsp;{/if}
 					</td>	
 				</tr>
 				{/if}
@@ -114,14 +115,14 @@
 				{if !empty($ITEM.ITM_CurrentValue)}
 				<tr>
 					<td class="tabledata3" align="right"><b>Current value</b></td>
-					<td valign="top" colspan="2" class="tabledata7" nowrap>{$ITEM.ITM_CurrentValue|escape}</td>	
+					<td valign="top" colspan="2" class="tabledata7" nowrap>{if !empty($ITEM.ITM_CurrentValue)}${$ITEM.ITM_CurrentValue|escape}{/if}</td>	
 				</tr>
 				{/if}
 				
 				{if !empty($ITEM.ITM_ReplacementCost)}
 				<tr>
 					<td class="tabledata3" align="right"><b>Replacement cost</b></td>
-					<td valign="top" colspan="2" class="tabledata7" nowrap>{$ITEM.ITM_ReplacementCost|escape}</td>	
+					<td valign="top" colspan="2" class="tabledata7" nowrap>{if !empty($ITEM.ITM_ReplacementCost)}${$ITEM.ITM_ReplacementCost|escape}{/if}</td>	
 				</tr>
 				{/if}
 				
@@ -154,6 +155,6 @@
 				{/if}
 			</form>
 		</table>
-	<//td>
+	</td>
 </tr>
 </table>

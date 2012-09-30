@@ -6,11 +6,11 @@
 	checkAuth($_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
 	
 
-	define('REC_4_PAGE', 10);
+	define('REC_4_PAGE', 15);
 	
 	//print_r($_SESSION['SEARCH']);
 	//print_R($_REQUEST);
-	if ($_REQUEST['action'] == 'deleteOne' && isset($_REQUEST['id']))
+	if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'deleteOne' && isset($_REQUEST['id']))
 	{
 		// delete first picture if exist
 		$sSql = 'SELECT ITM_Picture FROM Item WHERE ITM_ID = ' . $_REQUEST['id'];
@@ -33,7 +33,7 @@
 		$sSql = "DELETE FROM Item WHERE ITM_ID = {$_REQUEST['id']}";
 		$result = mysql_query($sSql) or die('Query failed: ' . mysql_error());
 	}
-	elseif ($_REQUEST['action'] == 'deleteSelected' && isset($_POST['chkItem']))
+	elseif (isset($_REQUEST['action']) && $_REQUEST['action'] == 'deleteSelected' && isset($_POST['chkItem']))
 	{
 		$sId = implode($_POST['chkItem'], ', ');
 		// read all picture's filename
@@ -64,20 +64,22 @@
 	{
 		unset($_SESSION['SEARCH']);
 		$_SESSION['searchByText'] = $_POST['searchByText'];
+
+		if (strlen(trim($_SESSION['searchByText'])) > 0)
+			$sSqlSearchBy .= " (ITM_ShortName like '%{$_SESSION['searchByText']}%' OR " .
+						 " ITM_Description like '%{$_SESSION['searchByText']}%') ";
 	}
 	if (isset($_POST['searchByLocation']))
 	{
 		unset($_SESSION['SEARCH']);
 		$_SESSION['searchByLocation'] = $_POST['searchByLocation'];
+
+		if (strlen(trim($_SESSION['searchByLocation'])) > 0)
+			$sSqlSearchBy .= (!empty($sSqlSearchBy) ? ' AND ' : '') . " LOC_ID = {$_SESSION['searchByLocation']} ";
 	}
 		
-	if (strlen(trim($_SESSION['searchByText'])) > 0)
-		$sSqlSearchBy .= " (ITM_ShortName like '%{$_SESSION['searchByText']}%' OR " .
-						 " ITM_Description like '%{$_SESSION['searchByText']}%') ";
-	if (strlen(trim($_SESSION['searchByLocation'])) > 0)
-		$sSqlSearchBy .= (!empty($sSqlSearchBy) ? ' AND ' : '') . " LOC_ID = {$_SESSION['searchByLocation']} ";
-	
-	if ($_REQUEST['searchRequest'] == 1) 
+			
+	if (isset($_REQUEST['searchRequest']) && $_REQUEST['searchRequest'] == 1) 
 		$_GET['pageID'] = 1;
 		
 		
@@ -140,7 +142,7 @@
 		'spacesBeforeSeparator' => 2,
 		'linkClass' => 'whiteLink'
 	);
-	$pager = &Pager::factory($pager_options);
+	$pager = Pager::factory($pager_options);
 	$links = $pager->getLinks();
 	
 	//print_r($aItems);

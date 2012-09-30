@@ -4,7 +4,7 @@
         checkAuth($_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
         
         // act is used to avoid conflict with form action properties in javascript
-        if ($_REQUEST['act'] == 'deleteOne' && isset($_REQUEST['id']))
+        if (isset($_REQUEST['act']) && $_REQUEST['act'] == 'deleteOne' && isset($_REQUEST['id']))
         {
                 $sSql = 'SELECT LOC_Picture FROM Location WHERE LOC_ID = ' . $_REQUEST['id'];
                 $pictName = fetchFromDb($sSql, true);
@@ -18,21 +18,21 @@
         }
         
         // add item into a location
-        elseif ($_REQUEST['act'] == 'addItemHere' && isset($_REQUEST['id']))
+        elseif (isset($_REQUEST['act']) && $_REQUEST['act'] == 'addItemHere' && isset($_REQUEST['id']))
         {
                 $_SESSION['ITM_LocationId'] = $_REQUEST['id'];
                 header('Location: ./editItem.php?returnTo=locations.php');
         }
         
         // search here
-        elseif ($_REQUEST['act'] == 'searchHere' && isset($_REQUEST['id']))
+        elseif (isset($_REQUEST['act']) && $_REQUEST['act'] == 'searchHere' && isset($_REQUEST['id']))
         {
                 $_SESSION['ITM_LocationId'] = $_REQUEST['id'];
                 header('Location: ./editItem.php');
         }
         
         // save a location
-        elseif ($_REQUEST['act'] == 'save')
+        elseif (isset($_REQUEST['act']) && $_REQUEST['act'] == 'save')
         {
                 $aLoc = saveFormData();
 //                                      die('jjjj');
@@ -78,7 +78,7 @@
         $aLocations = fetchFromDb($sSql);
         
         //print_R($aLocations);
-        $GLOBALS["hSmarty"]->assign('LOCATION', $aLoc);
+        if (isset($aLoc)) $GLOBALS["hSmarty"]->assign('LOCATION', $aLoc);
         $GLOBALS["hSmarty"]->assign('OBJ_LIST', $aLocations);
         $GLOBALS["hSmarty"]->assign('SHOW_LOCATION_LIST', true);
         $GLOBALS['hSmarty']->display('_main.tpl');

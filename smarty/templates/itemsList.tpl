@@ -25,7 +25,7 @@
 
                                 </form>
                         </td>
-                        <td class="tableheader" align="right" width="25%">{$PAGE_LINKS}</td>
+                        <td class="tableheader" align="right" width="25%" style="text-align:right">{$PAGE_LINKS}</td>
                         
                 </tr>
                 <tr>
@@ -40,9 +40,9 @@
                 <tr>
                         <td class="tableheader" width="10%" align="center" nowrap>Picture</td>
                         <td class="tableheader" width="14%" align="center">Short name</td>
-                        <td class="tableheader" width="15%" align="center">Description</td>
-                        <td class="tableheader" width="15%" align="center">Location</td>
-                        <td class="tableheader" width="4%" align="center">Quantity</td>
+                        <td class="tableheader" width="17%" align="center">Description</td>
+                        <td class="tableheader" width="10%" align="center">Location</td>
+                        <td class="tableheader" width="7%" align="center">Purchase Price</td>
                         <td class="tableheader" width="10%" align="center">Lend to</td>
                         <td class="tableheader" width="6%" align="center">Date</td>
                         <td class="tableheader" width="6%" align="center">Action</td>
@@ -69,15 +69,15 @@
                                                 </table>
                                         </td>
                                         <td class="tabledata4" width="14%" valign="top"><b>{$item.ITM_ShortName}</b></td>
-                                        <td class="tabledata4" width="15%" valign="top" title="{$item.ITM_Description}">{$item.ITM_Description|truncate:75:"..."}</td>
-                                        <td class="tabledata4" width="15%" valign="top">
-                                                <b>{$item.LOC_Description1}</b>
+                                        <td class="tabledata4" valign="top" title="{$item.ITM_Description}">{$item.ITM_Description|nl2br}</td>
+                                        <td class="tabledata4" valign="top">
+                                                <b>{$item.LOC_Description1|nl2br}</b>
                                                 {if strlen($item.LOC_Description2) > 0}
-                                                        <br/>{$item.LOC_Description2}
+                                                        <br/>{$item.LOC_Description2|nl2br}
                                                 {/if}
                                         </td>
-                                        <td class="tabledata4" width="5%" valign="top" align="center">{$item.ITM_Quantity}</td>
-                                        <td class="tabledata4" width="10%" valign="top" align="center">
+                                        <td class="tabledata4" valign="top" align="center">{if !empty($item.ITM_PurchasePrice)}${$item.ITM_PurchasePrice}{/if}</td>
+                                        <td class="tabledata4" valign="top" align="center">
                                                 {if strlen($item.PPL_Name) > 0}
                                                         {$item.PPL_Name}<br/>{$item.ITM_LendDate}
                                                 {/if}

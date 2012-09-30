@@ -8,7 +8,7 @@
 
 	
 	// save pictures
-	if ($_REQUEST['action'] == 'save')
+	if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'save')
 	{
 		for ($i = 1; $i <= 4; $i++)
 		{
@@ -26,7 +26,7 @@
 			$result = mysql_query($sSql) or die('Query failed: ' . mysql_error());
 		}
 	}
-	elseif ($_REQUEST['action'] == 'deletePicture' && is_numeric($_REQUEST['pictId']))
+	elseif (isset($_REQUEST['action']) && $_REQUEST['action'] == 'deletePicture' && is_numeric($_REQUEST['pictId']))
 	{
 		$sSql = "DELETE FROM Picture WHERE PCT_ID = {$_REQUEST['pictId']}";
 		$result = mysql_query($sSql) or die('Query failed: ' . mysql_error());

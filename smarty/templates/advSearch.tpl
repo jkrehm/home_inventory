@@ -10,8 +10,8 @@
 					<td class=tableheader align="left" colspan="3">
 						<table cellpadding="0" cellspacing="0" width="100%">
 						<TR>
-							<TD width="55%"><b>Advanced search</b></TD>
-							<td align="right">&nbsp;&nbsp;&nbsp;
+							<td><b>Advanced search</b></td>
+							<td style="text-align:right">&nbsp;&nbsp;&nbsp;
 								<input type="button" class="smallbutton" onclick="save('frmAdvSearch', 'reset');" value="Reset">&nbsp;&nbsp;&nbsp;
 								<input type="button" class="smallbutton" onclick="save('frmAdvSearch', 'save');" value="Search">&nbsp;&nbsp;
 							</td>

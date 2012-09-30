@@ -25,12 +25,12 @@
 					<td class=tableheader align="left" colspan="3">
 						<table cellpadding="0" cellspacing="0" width="100%">
 						<TR>
-							<TD width="55%"><b>{if isset($smarty.request.id)}Edit Item{else}Insert new item{/if}</b>
+							<TD><b>{if isset($smarty.request.id)}Edit Item{else}Insert new item{/if}</b>
 								<b>&nbsp;&nbsp; (step 1/<a href="#" onclick="document.location.href='editPicture.php?id={$smarty.request.id}';" class="whiteLink">2</a>)</b>
 							<br/>
 								Fields marked with <span style="color: #FF0000">*</span> are required.
 							</TD>
-							<td align="right">
+							<td align="right" style="text-align:right">
 								<input type="button" class="smallbutton" onclick="document.location.href='{if !empty($smarty.request.returnTo)}{$smarty.request.returnTo}{else}list.php{/if}{if !empty($smarty.session.pageID)}?pageID={$smarty.session.pageID}{/if}';" value="&lt; Back">&nbsp;&nbsp;&nbsp;
 								<input type="button" class="smallbutton" onclick="save('frmItem', 'saveAndNew');" value="Save and New">&nbsp;&nbsp;&nbsp;
 								<input type="button" class="smallbutton" onclick="save('frmItem', 'save');" value="Save">&nbsp;&nbsp;
@@ -145,7 +145,7 @@
 				<tr>
 					<td class="tabledata3" align="left" ><b>Purchase date - Location - Price</b></td>
 					<td valign="top" colspan="2" class="tabledata3">
-						{html_select_date prefix="purchaseDate" time=$ITEM.ITM_PurchaseDate field_order='dmY' month_format="%m" start_year="1910" reverse_years="true" year_empty="---" month_empty="---" day_empty="---"}
+						{html_select_date prefix="purchaseDate" time=$ITEM.ITM_PurchaseDate field_order='mdY' month_format="%m" start_year="1910" reverse_years="true" year_empty="---" month_empty="---" day_empty="---"}
 						&nbsp;&nbsp;-&nbsp;&nbsp;
 						<input type="text" class="text" size="25" name="ITM_PurchaseLocation" value="{$ITEM.ITM_PurchaseLocation|escape}">&nbsp;&nbsp;-&nbsp;&nbsp;
 						<input type="text" class="text" size="10" name="ITM_PurchasePrice" value="{$ITEM.ITM_PurchasePrice|escape}">

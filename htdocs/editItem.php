@@ -10,7 +10,7 @@
 	$bPurIncompleteDate = false;
 	
 	// save an item
-	if ($_REQUEST['action'] == 'save' || $_REQUEST['action'] == 'saveAndNew')
+	if (isset($_REQUEST['action']) && ($_REQUEST['action'] == 'save' || $_REQUEST['action'] == 'saveAndNew'))
 	{
 		$aItem = saveFormData();
 		
@@ -222,6 +222,10 @@
 	
 	if (isset($_REQUEST['new']))
 		pushMessage('Last item has been saved', false);
+
+	// Define the returnTo to point back to the viewItem page, along with its returnTo value
+	if (isset($_REQUEST['returnToView']))
+		$_REQUEST['returnTo'] = 'viewItem.php?id=' . $_REQUEST['id'] . '&returnTo=' . $_REQUEST['returnToView'];
 		
 	// read locations
 	$sSql = 'SELECT * FROM Location ';
@@ -237,7 +241,7 @@
 	//print_r($aItem);
 	$GLOBALS["hSmarty"]->assign('SHOW_EDIT_ITEM', true);
 	$GLOBALS["hSmarty"]->assign('ITEM', $aItem);
-	$GLOBALS["hSmarty"]->assign('CONDITIONS', array(1 => 'poor', 2 => 'good', 3 => 'Fair', 4 => 'excellent'));
+	$GLOBALS["hSmarty"]->assign('CONDITIONS', array(1 => 'poor', 2 => 'fair', 3 => 'good', 4 => 'excellent'));
 	$GLOBALS['hSmarty']->display('_main.tpl');
 
 

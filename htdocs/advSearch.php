@@ -6,7 +6,7 @@
 	checkAuth($_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
 	
 	
-	if ($_REQUEST['action'] == 'save')
+	if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'save')
 	{
 		if (strlen(trim($_REQUEST['descriptionTxt'])) > 0)
 			$_SESSION['SEARCH']['descriptionTxt'] = $_REQUEST['descriptionTxt'];
@@ -48,7 +48,7 @@
 		unset($_SESSION['searchByText']);
 		header("Location: ./list.php?pageID={$_SESSION['pageID']}");
 	}
-	elseif ($_REQUEST['action'] == 'reset')
+	elseif (isset($_REQUEST['action']) && $_REQUEST['action'] == 'reset')
 	{
 		unset($_SESSION['SEARCH']);
 	}
@@ -62,7 +62,7 @@
 	}	
 	
 	//print_r($aItems);
-	$GLOBALS["hSmarty"]->assign('OBJ_LIST', $aItems);
+	//$GLOBALS["hSmarty"]->assign('OBJ_LIST', $aItems);
 	$GLOBALS["hSmarty"]->assign('SHOW_ADVANCED_SEARCH', true);
 	$GLOBALS['hSmarty']->display('_main.tpl');
 

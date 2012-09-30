@@ -4,7 +4,7 @@
 	checkAuth($_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
 	
 
-	if ($_REQUEST['action'] == 'deleteOne' && isset($_REQUEST['id']))
+	if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'deleteOne' && isset($_REQUEST['id']))
 	{
 		// reset loan on item
 		$sSql = 'UPDATE Item SET ITM_LendDate = NULL, ITM_LendToId = NULL' .
@@ -16,7 +16,7 @@
 	}
 		
 	// save a person
-	elseif ($_REQUEST['action'] == 'save')
+	elseif (isset($_REQUEST['action']) && $_REQUEST['action'] == 'save')
 	{
 		$aLoc = saveFormData();
 		

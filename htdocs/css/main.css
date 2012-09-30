@@ -109,6 +109,9 @@ A.whiteLink:hover  {
 
 
 
+TD {
+	text-align: left;
+}
 
 TD.normal  {
 	FONT-SIZE : 14px;
