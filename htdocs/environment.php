@@ -1,6 +1,6 @@
 <?php
 	// edit the following constants with your home inventory root...
-	define('SITE_PATH', '/var/www/localhost/home_inventory/htdocs');
+	define('SITE_PATH', '/var/www/localhost/home_inventory');
 	// smarty package installation path (depends on your linux distribution)...
 	define('SMARTY_DIR', '/usr/share/php/smarty/');
 	// MySQL info
@@ -30,10 +30,10 @@
 	$GLOBALS['MSG_QUEUE'] = array();
 	
 	$smarty = new Smarty();
-	$smarty->template_dir = SITE_PATH . '../smarty/templates/';
-	$smarty->compile_dir = SITE_PATH . '../smarty/templates_c/';
-	$smarty->configs = SITE_PATH . '../smarty/configs/';
-	$smarty->cache = SITE_PATH . '../smarty/cache/';
+	$smarty->template_dir = SITE_PATH . 'smarty/templates/';
+	$smarty->compile_dir = SITE_PATH . 'smarty/templates_c/';
+	$smarty->configs = SITE_PATH . 'smarty/configs/';
+	$smarty->cache = SITE_PATH . 'smarty/cache/';
 	$GLOBALS['hSmarty'] = $smarty;
 	
 	
